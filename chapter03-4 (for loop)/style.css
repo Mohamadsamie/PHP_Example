@@ -1,0 +1,48 @@
+body {
+    background: #00796b;
+}
+.form-area{
+    width: 450px;
+    min-height: 150px;
+    margin: 200px auto;
+    text-align: right;
+    direction: rtl;
+    background: #4db6ac;
+    padding: 30px;
+    box-shadow: 10px 10px 10px #004d40;
+    border-radius: 5px;
+}
+.row{
+    width: 100%;
+    min-height: 50px;
+}
+.label {
+    float: right;
+    width: 100px;
+    font-family:"0 Nazanin" ;
+    font-size: 20px;
+    color: #fff;
+}
+.formelement input[type=text], .formelement input[type=password] {
+    width: 260px;
+    min-height: 25px;
+    font-family:"0 Nazanin" ;
+    font-size: 20px;
+    border-radius: 10px;
+}
+.formelement input[type=submit] {
+    margin: 8px 100px;
+    padding: 3px;
+    width: 75px;
+    border: 1px solid #00695c;
+    border-radius: 5px;
+    background: #a7ffeb;
+    font: 18px "0 Nazanin";
+    color: #00695c;
+    transition: ease 0.5s;
+}
+.formelement input[type=submit]:hover {
+    border-color: #a7ffeb;
+    background: #00695c;
+    color: #a7ffeb;
+}
