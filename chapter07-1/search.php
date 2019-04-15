@@ -1,12 +1,13 @@
 <?php
 
-    if (isset($_POST['btn'])){
-        $str = $_POST['str'];
-//        echo $str;}
-        $conn = mysqli_connect('localhost','root','','newtest');
-        $sql = "SELECT * FROM users WHERE name LIKE '%$str%'";
-        $row = mysqli_query($conn,$sql);
-    }
+if (isset($_POST['btn'])) {
+    $data = $_POST['frm'];
+//    var_dump($data);
+    $str = $data['str'];
+    $conn = mysqli_connect('localhost', 'root', '', 'newtest');
+    $sql = "SELECT * FROM users WHERE $data[select] LIKE '%$str%'";
+    $row = mysqli_query($conn, $sql);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,16 +21,42 @@
 </head>
 <body>
 <form id="s" class="form-area" method="post">
-    <input class="formelement" type="text" name="str">
+    <input class="formelement" type="text" name="frm[str]">
+    <select name="frm[select]" id="">
+        <option value="name">Search by name</option>
+        <option value="last">Search by lastname</option>
+        <option value="age">Search by age</option>
+        <option value="field">Search by field</option>
+    </select>
     <input class="formelement" type="submit" name="btn" value="جستجو">
 
 </form>
-    <ul>
-        <?php
-            while ($result = mysqli_fetch_array($row)){
-                echo "<li>".$result['name']."</li>";
-            }
+
+<table id="maintbl">
+    <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Field</th>
+        <th>Picture</th>
+    </tr>
+    <?php
+    while ($res = mysqli_fetch_array($row)) {
+
+
         ?>
-    </ul>
+        <tr>
+            <td><?php echo $res['name'] ?></td>
+            <td><?php echo $res['last'] ?></td>
+            <td><?php echo $res['age'] ?></td>
+            <td><?php echo $res['field'] ?></td>
+            <td><img src="<?php echo $res['path'] ?>" style="height: 80px; border-radius: 50%;" /></td>
+
+
+        </tr>
+        <?php
+    }
+    ?>
+</table>
 </body>
 </html>
